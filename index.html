@@ -19,8 +19,6 @@
 
         /* INTRO */
         #intro { position: fixed; width: 100%; height: 100vh; background: var(--royal-red); z-index: 10000; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 1.5s; }
-        
-        /* MUHR AYLANISHI */
         .rotating-seal { width: 150px; height: 150px; border-radius: 50%; border: 3px solid var(--gold); margin-bottom: 20px; background: url('1000127155.jpg') center/cover; animation: rotateSeal 15s linear infinite; }
         @keyframes rotateSeal { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
@@ -34,19 +32,26 @@
         .k-right { transform: scaleX(-1); }
         .toybola-img { width: 160px; height: 160px; border-radius: 50%; object-fit: cover; border: 4px solid var(--gold); }
 
-        /* NAQSHLAR */
+        /* KARTALAR */
+        .card { background: white; margin: 30px 15px; padding: 60px 25px; border-radius: 30px; border: 1px solid rgba(163, 29, 36, 0.1); position: relative; text-align: center; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
         .corner-pattern { position: absolute; width: 120px; opacity: 0.8; z-index: 0; pointer-events: none; }
         .top-right { top: 0; right: 0; }
         .bottom-left { bottom: 0; left: 0; transform: rotate(180deg); }
-
-        /* KARTALAR */
-        .card { background: white; margin: 30px 15px; padding: 60px 25px; border-radius: 30px; border: 1px solid rgba(163, 29, 36, 0.1); position: relative; text-align: center; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        .card * { position: relative; z-index: 1; }
+        
         .shohona-title { font-family: 'Great Vibes'; font-size: 5rem; color: var(--royal-red); margin: 10px 0; }
         .gold-divider { width: 80px; height: 2px; background: var(--gold); margin: 20px auto; }
-        .btn-action { width: 90%; padding: 18px; margin: 10px 0; border: none; border-radius: 15px; font-weight: bold; cursor: pointer; }
+        .btn-action { width: 90%; padding: 18px; margin: 10px 0; border: none; border-radius: 15px; font-weight: bold; cursor: pointer; text-decoration: none; display: inline-block; font-family: 'Montserrat', sans-serif; }
 
-        /* OSH ANIMATSIYASI */
+        /* MAP BUTTONS - NEW STYLE */
+        .btn-map { background: transparent; border: 2px solid var(--gold); color: var(--royal-red); transition: 0.3s; }
+        .btn-map:hover { background: var(--gold); color: white; }
+
+        /* COUNTDOWN STYLE */
+        .countdown-container { display: flex; justify-content: center; gap: 10px; margin-top: 20px; }
+        .timer-box { background: var(--royal-red); color: white; padding: 10px; border-radius: 12px; min-width: 65px; border: 1px solid var(--gold); }
+        .timer-box span { display: block; font-size: 1.4rem; font-weight: bold; }
+        .timer-box label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; }
+
         .rotating-palov { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin: 10px auto; border: 2px solid var(--gold); animation: rotatePalov 12s linear infinite; }
         @keyframes rotatePalov { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
     </style>
@@ -97,7 +102,9 @@
             <h2 id="txt-location-title" style="color: var(--royal-red);">MANZIL</h2>
             <p><b>"IDEAL SS"</b> <span id="txt-hall">TANTANALAR SAROYI</span></p>
             <p id="txt-address">Sho'rchi tumani, Surxondaryo</p>
-            <button class="btn-action" style="background: #eee;" onclick="window.open('http://google.com/maps')">XARITA</button>
+            
+            <a href="https://maps.app.goo.gl/7yZt6CSat9SKXWX2A?g_st=ac" target="_blank" class="btn-action btn-map">GOOGLE MAPS</a>
+            <a href="https://yandex.uz/maps/org/8650108130/" target="_blank" class="btn-action btn-map">YANDEX MAPS</a>
             <img src="pattern_fon.png" class="corner-pattern bottom-left">
         </div>
 
@@ -116,15 +123,27 @@
             <img src="pattern_fon.png" class="corner-pattern top-right">
             <h2 id="txt-confirm-title" style="color: var(--royal-red);">TASHRIFNI TASDIQLASH</h2>
             <form id="attendance-form">
-                <input type="text" id="input-name" placeholder="Ismingiz" required style="width:90%; padding:15px; margin:10px; border-radius:12px; border:1px solid #ddd;">
-                <input type="number" id="input-gift" placeholder="To'yona miqdori (ixtiyoriy)" style="width:90%; padding:15px; margin:10px; border-radius:12px; border:1px solid #ddd;">
-                <select id="input-status" style="width:90%; padding:15px; margin:10px; border-radius:12px; border:1px solid #ddd;">
+                <input type="text" name="name" id="input-name" placeholder="Ismingiz" required style="width:90%; padding:15px; margin:10px; border-radius:12px; border:1px solid #ddd;">
+                <input type="number" name="gift" id="input-gift" placeholder="To'yona miqdori (ixtiyoriy)" style="width:90%; padding:15px; margin:10px; border-radius:12px; border:1px solid #ddd;">
+                <select name="status" id="input-status" style="width:90%; padding:15px; margin:10px; border-radius:12px; border:1px solid #ddd;">
                     <option id="opt-1" value="Boraman">Boraman</option>
                     <option id="opt-2" value="Oilaviy">Oilaviy boramiz</option>
                     <option id="opt-3" value="Afsus">Borolmayman</option>
                 </select>
                 <button type="submit" id="txt-send" class="btn-action" style="background: var(--royal-red); color: white;">YUBORISH</button>
             </form>
+            <img src="pattern_fon.png" class="corner-pattern bottom-left">
+        </div>
+
+        <div class="card" data-aos="fade-up">
+            <img src="pattern_fon.png" class="corner-pattern top-right">
+            <h3 id="txt-countdown-title" style="color: var(--royal-red); font-size: 1.2rem;">TO'YGACHA QOLGAN VAQT:</h3>
+            <div class="countdown-container">
+                <div class="timer-box"><span id="days">00</span><label id="lbl-days">Kun</label></div>
+                <div class="timer-box"><span id="hours">00</span><label id="lbl-hours">Soat</label></div>
+                <div class="timer-box"><span id="minutes">00</span><label id="lbl-min">Daq</label></div>
+                <div class="timer-box"><span id="seconds">00</span><label id="lbl-sec">Son</label></div>
+            </div>
             <img src="pattern_fon.png" class="corner-pattern bottom-left">
         </div>
 
@@ -135,10 +154,41 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+        // COUNTDOWN TIMER LOGIC
+        const targetDate = new Date("Dec 27, 2026 07:00:00").getTime();
+        const timerInterval = setInterval(function() {
+            const now = new Date().getTime();
+            const diff = targetDate - now;
+            if (diff < 0) {
+                clearInterval(timerInterval);
+                return;
+            }
+            document.getElementById("days").innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
+            document.getElementById("hours").innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            document.getElementById("minutes").innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            document.getElementById("seconds").innerText = Math.floor((diff % (1000 * 60)) / 1000);
+        }, 1000);
+
+        // FORM SUBMISSION (GOOGLE SHEETS)
+        const scriptURL = 'BU_YERGA_URL_QOYING'; 
+        const form = document.getElementById('attendance-form');
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            document.getElementById('txt-send').innerText = "YUBORILMOQDA...";
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => {
+                    alert("Rahmat! Ma'lumotlaringiz qabul qilindi.");
+                    document.getElementById('txt-send').innerText = "YUBORILDI";
+                    form.reset();
+                })
+                .catch(error => alert("Xatolik! Internetni tekshiring."));
+        });
+
+        // LANGUAGE TOGGLE
         let currentLang = 'latin';
         const content = {
-            latin: { welcome: "ASSALOMU ALAYKUM", open: "OCHISH", invite: "Lutfan taklif etamiz!", event: "SUNNAT TO'YI", speech1: "Sizni aziz mehmonimiz sifatida farzandimizning hayotidagi ushbu quvonchli va shonli kunini baham ko'rishga chin qalbimizdan taklif qilamiz!", timeTitle: "TADBIR VAQTI", osh: "NAHOR OSHI: 07:00 – 09:00", party: "TANTANA: 18:00 DA", locTitle: "MANZIL", hall: "TANTANALAR SAROYI", address: "Sho'rchi tumani, Surxondaryo", giftTitle: "TO'YONA", copy: "NUSXALASH", confirmTitle: "TASHRIFNI TASDIQLASH", namePlh: "Ismingiz", giftPlh: "To'yona miqdori (ixtiyoriy)", opt1: "Boraman", opt2: "Oilaviy boramiz", opt3: "Borolmayman", send: "YUBORISH", welcomeBot: "Xush kelibsiz!", btn: "KRILL" },
-            krill: { welcome: "АССАЛОМУ АЛАЙКУМ", open: "ОЧИШ", invite: "Лутфан таклиф этамиз!", event: "СУННАТ ТЎЙИ", speech1: "Сизни азиз меҳмонимиз сифатида фарзандимизнинг ҳаётидаги ушбу қувончли ва шонли кунини баҳам кўришга чин қалбимиздан таклиф қиламиз!", timeTitle: "ТАДБИР ВАҚТИ", osh: "НАҲОР ОШИ: 07:00 – 09:00", party: "ТАНТАНА: 18:00 ДА", locTitle: "МАНЗИЛ", hall: "ТАНТАНАЛАР САРОЙИ", address: "Шўрчи тумани, Сурхондарё", giftTitle: "ТЎЁНА", copy: "НУСХАЛАШ", confirmTitle: "ТАШРИФНИ ТАСДИҚЛАШ", namePlh: "Исмингиз", giftPlh: "Тўёна миқдори (ихтиёрий)", opt1: "Бораман", opt2: "Оилавий борамиз", opt3: "Боролмайман", send: "ЮБОРИШ", welcomeBot: "Хуш келибсиз!", btn: "LOTIN" }
+            latin: { welcome: "ASSALOMU ALAYKUM", open: "OCHISH", invite: "Lutfan taklif etamiz!", event: "SUNNAT TO'YI", speech1: "Sizni aziz mehmonimiz sifatida farzandimizning hayotidagi ushbu quvonchli va shonli kunini baham ko'rishga chin qalbimizdan taklif qilamiz!", timeTitle: "TADBIR VAQTI", osh: "NAHOR OSHI: 07:00 – 09:00", party: "TANTANA: 18:00 DA", locTitle: "MANZIL", hall: "TANTANALAR SAROYI", address: "Sho'rchi tumani, Surxondaryo", giftTitle: "TO'YONA", copy: "NUSXALASH", confirmTitle: "TASHRIFNI TASDIQLASH", countTitle: "TO'YGACHA QOLGAN VAQT:", d: "Kun", h: "Soat", m: "Daq", s: "Son", btn: "KRILL" },
+            krill: { welcome: "АССАЛОМУ АЛАЙКУМ", open: "ОЧИШ", invite: "Лутфан таклиф этамиз!", event: "СУННАТ ТЎЙИ", speech1: "Сизни азиз меҳмонимиз сифатида фарзандимизнинг ҳаётидаги ушбу қувончли ва шонли кунини баҳам кўришга чин қалбимиздан таклиф қиламиз!", timeTitle: "ТАДБИР ВАҚТИ", osh: "НАҲОР ОШИ: 07:00 – 09:00", party: "ТАНТАНА: 18:00 ДА", locTitle: "МАНЗИЛ", hall: "ТАНТАНАЛАР САРОЙИ", address: "Шўрчи тумани, Сурхондарё", giftTitle: "ТЎЁНА", copy: "НУСХАЛАШ", confirmTitle: "ТАШРИФНИ ТАСДИҚЛАШ", countTitle: "ТЎЙГАЧА ҚОЛГАН ВАҚТ:", d: "Кун", h: "Соат", m: "Дак", s: "Сон", btn: "LOTIN" }
         };
 
         function toggleLang() {
@@ -158,13 +208,11 @@
             document.getElementById('txt-gift-title').innerText = l.giftTitle;
             document.getElementById('txt-copy').innerText = l.copy;
             document.getElementById('txt-confirm-title').innerText = l.confirmTitle;
-            document.getElementById('input-name').placeholder = l.namePlh;
-            document.getElementById('input-gift').placeholder = l.giftPlh;
-            document.getElementById('opt-1').innerText = l.opt1;
-            document.getElementById('opt-2').innerText = l.opt2;
-            document.getElementById('opt-3').innerText = l.opt3;
-            document.getElementById('txt-send').innerText = l.send;
-            document.getElementById('txt-welcome-bottom').innerText = l.welcomeBot;
+            document.getElementById('txt-countdown-title').innerText = l.countTitle;
+            document.getElementById('lbl-days').innerText = l.d;
+            document.getElementById('lbl-hours').innerText = l.h;
+            document.getElementById('lbl-min').innerText = l.m;
+            document.getElementById('lbl-sec').innerText = l.s;
             document.getElementById('langBtn').innerText = l.btn;
         }
 
@@ -181,7 +229,7 @@
         }
 
         function copyCard() {
-            navigator.clipboard.writeText(document.getElementById('card-num').innerText);
+            navigator.clipboard.writeText("9860123456789012");
             alert("Nusxa olindi!");
         }
     </script>
